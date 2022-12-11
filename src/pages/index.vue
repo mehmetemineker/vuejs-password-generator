@@ -16,16 +16,15 @@ const { t } = useI18n()
 
 <template>
   <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
+        Password Generator
       </a>
     </p>
     <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
+      <!-- <em text-sm opacity-75>{{ t('intro.desc') }}</em> -->
+
+      <em>For fast, practical and more secure passwords.</em>
     </p>
 
     <div py-4 />
@@ -49,8 +48,3 @@ const { t } = useI18n()
     </div>
   </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
