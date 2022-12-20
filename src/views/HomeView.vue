@@ -3,15 +3,15 @@ import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
 </script>
 
 <template>
-  <main class="pt-16 flex justify-center">
-    <div class="bg-ressd-300 w-2/5 text-center text-gray-700">
-      <h1 class="text-6xl font-bold mb-3">Password Generator</h1>
-      <p class="text-gray-400">For fast, practical and more secure passwords.</p>
+  <main class="pt-8 md:pt-16 flex justify-center">
+    <div class="bg-resdd-300 mx-6 text-center text-gray-700">
+      <h1 class="text-4xl md:text-6xl font-bold mb-3">Password Generator</h1>
+      <p class="text-sm md:text-xl text-gray-400">For fast, practical and more secure passwords.</p>
 
-      <div class="relative pt-20">
+      <div class="relative mt-10 md:mt-20">
         <input type="text" readonly
-          class="block w-full p-6 pr-20 text-4xl rounded-t-md bg-gray-100 outline-0 border-none focus:ring-0 focus:border-none font-medium	"
-          value="deneme" />
+          class="block w-full p-6 pr-20 text-3xl md:text-4xl rounded-t-md bg-gray-100 outline-0 border-none focus:ring-0 focus:border-none font-medium	"
+          value="denemeadsadasdasdasdasdasasfafvwfweed" />
 
         <button type="submit" class="absolute right-2.5 bottom-2.5 p-3 rounded-full">
           <ClipboardDocumentIcon class="h-10" />
@@ -23,7 +23,7 @@ import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
       </div>
 
 
-      <div class="grid grid-cols-2 gap-6 mb-20 ">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 ">
         <div>
           <span class="text-sm font-semibold">
             30
