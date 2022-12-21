@@ -1,5 +1,69 @@
 <script setup lang="ts">
+import { computed, onMounted, ref, watch } from 'vue'
 import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
+import passwordMeter from "vue-simple-password-meter"
+
+const isCheckedUppercase = ref(true)
+const isCheckedLowercase = ref(true)
+const isCheckedNumbers = ref(true)
+const isCheckedSymbols = ref(true)
+const passwordLength = ref(8)
+const password = ref("")
+
+const uppercases = "abcdefghijklmnopqrstuvwxyz"
+const lowercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const numbers = "0123456789"
+const sympbols = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+
+const characters = computed(() => {
+  let characters = ""
+
+  if (isCheckedUppercase.value) {
+    characters += uppercases
+  }
+
+  if (isCheckedLowercase.value) {
+    characters += lowercases
+  }
+
+  if (isCheckedNumbers.value) {
+    characters += numbers
+  }
+
+  if (isCheckedSymbols.value) {
+    characters += sympbols
+  }
+
+  return characters
+})
+
+const generate = () => {
+  let generatedPassword = ""
+
+  for (let i = 0; i < passwordLength.value; i++) {
+    generatedPassword += characters.value.charAt(Math.floor(Math.random() * characters.value.length))
+  }
+
+  password.value = generatedPassword
+}
+
+const copy = () => {
+  navigator.clipboard.writeText(password.value)
+}
+
+const generateAndCopy = () => {
+  generate()
+  copy()
+}
+
+watch([passwordLength, characters], () => {
+  generate()
+})
+
+onMounted(() => {
+  generate()
+})
+
 </script>
 
 <template>
@@ -11,52 +75,52 @@ import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
       <div class="relative mt-10 md:mt-20">
         <input type="text" readonly
           class="block w-full p-6 pr-20 text-3xl md:text-4xl rounded-t-md bg-gray-100 outline-0 border-none focus:ring-0 focus:border-none font-medium	"
-          value="denemeadsadasdasdasdasdasasfafvwfweed" />
+          v-model="password" />
 
-        <button type="submit" class="absolute right-2.5 bottom-2.5 p-3 rounded-full">
+        <button type="submit" class="absolute right-2.5 bottom-2.5 p-3 rounded-full" @click="copy">
           <ClipboardDocumentIcon class="h-10" />
         </button>
       </div>
 
       <div class="bg-gray-200 rounded-full h-1.5 mb-10">
-        <div class="bg-primary-600 h-1.5 rounded-full" style="width: 45%"></div>
+        <password-meter :password="password" />
       </div>
 
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 ">
         <div>
           <span class="text-sm font-semibold">
-            30
+            {{ passwordLength }}
           </span>
-          <input type="range" min="0" max="24" value="5"
+          <input type="range" min="1" max="24" v-model="passwordLength"
             class="w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer">
         </div>
 
         <div class="grid grid-cols-2 gap-2">
           <div>
             <div class="flex items-center mr-4">
-              <input id="checkbox-lowercase" type="checkbox" value=""
+              <input id="checkbox-lowercase" type="checkbox" v-model="isCheckedUppercase"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
               <label for="checkbox-lowercase" class="ml-2 text-sm font-medium  dark:text-gray-300">Lowercase</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
-              <input id="checkbox-uppercase" type="checkbox" value=""
+              <input id="checkbox-uppercase" type="checkbox" v-model="isCheckedLowercase"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
               <label for="checkbox-uppercase" class="ml-2 text-sm font-medium dark:text-gray-300">Uppercase</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
-              <input id="checkbox-numbers" type="checkbox" value=""
+              <input id="checkbox-numbers" type="checkbox" v-model="isCheckedNumbers"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
               <label for="checkbox-numbers" class="ml-2 text-sm font-medium dark:text-gray-300">Numbers</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
-              <input id="checkbox-symbols" type="checkbox" value=""
+              <input id="checkbox-symbols" type="checkbox" v-model="isCheckedSymbols"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
               <label for="checkbox-symbols" class="ml-2 text-sm font-medium dark:text-gray-300">Symbols</label>
             </div>
@@ -64,7 +128,7 @@ import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
         </div>
       </div>
 
-      <button
+      <button @click="generateAndCopy"
         class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-3.5 mr-2 mb-2">Generate
         and Copy</button>
     </div>

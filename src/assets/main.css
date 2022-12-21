@@ -9,3 +9,10 @@ body{
 input[type=range]::-webkit-slider-thumb{
     @apply bg-primary-600
 }
+
+.po-password-strength-bar {
+  border-radius: 2px;
+  transition: all 0.2s linear;
+  height: 6px;
+  margin-top: 0;
+}

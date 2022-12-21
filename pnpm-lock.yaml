@@ -28,6 +28,7 @@ specifiers:
   vitest: ^0.25.6
   vue: ^3.2.45
   vue-router: ^4.1.6
+  vue-simple-password-meter: ^1.1.2
   vue-tsc: ^1.0.12
 
 dependencies:
@@ -36,6 +37,7 @@ dependencies:
   pinia: 2.0.28_e7lp6ggkpgyi5vqd44m2kxvk6i
   vue: 3.2.45
   vue-router: 4.1.6_vue@3.2.45
+  vue-simple-password-meter: 1.1.2
 
 devDependencies:
   '@rushstack/eslint-patch': 1.2.0
@@ -942,6 +944,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /async/0.9.2:
+    resolution: {integrity: sha512-l6ToIJIotphWahxxHyzK9bnLR6kM4jJIIgLShZeqLY7iboHoGkdgFl7W2/Ivi4SkMJYGKqW8vSuk0uKUj6qsSw==}
+    dev: false
+
   /async/3.2.4:
     resolution: {integrity: sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==}
     dev: true
@@ -1153,6 +1159,15 @@ packages:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
     dev: true
+
+  /clean/4.0.2:
+    resolution: {integrity: sha512-2LGVh4dNtI16L4UzqDHO6Hbl74YjG1vWvEUU78dgLO4kuyqJZFMNMPBx+EGtYKTFb14e24p+gWXgkabqxc1EUw==}
+    dependencies:
+      async: 0.9.2
+      minimist: 1.2.7
+      mix2: 1.0.5
+      skema: 1.0.2
+    dev: false
 
   /cli-cursor/3.1.0:
     resolution: {integrity: sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==}
@@ -2669,6 +2684,11 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
 
+  /make-array/0.1.2:
+    resolution: {integrity: sha512-bcFmxgZ+OTaMYJp/w6eifElKTcfum7Gi5H7vQ8KzAf9X6swdxkVuilCaG3ZjXr/qJsQT4JJ2Rq9SDYScWEdu9Q==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /map-stream/0.1.0:
     resolution: {integrity: sha512-CkYQrPYZfWnu/DAmVCpTSX/xHpKZ80eKh2lAkyA6AJTef6bW+6JpbQZN5rofum7da+SyN1bi5ctTm+lTfcCW3g==}
     dev: true
@@ -2732,7 +2752,11 @@ packages:
 
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
-    dev: true
+
+  /mix2/1.0.5:
+    resolution: {integrity: sha512-ybWz7nY+WHBBIyliND5eYaJKzkoa+qXRYNTmVqAxSLlFtL/umT2iv+pmyTu1oU7WNkrirwheqR8d9EaKVz0e5g==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -3345,6 +3369,14 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
+  /skema/1.0.2:
+    resolution: {integrity: sha512-5LWfF2RSW2B3xfOaY6j49X8aNwsnj9cRVrM5QMF7it+cZvpv5ufiOUT13ps2U52sIbAzs11bdRP6mi5qyg75VQ==}
+    dependencies:
+      async: 0.9.2
+      make-array: 0.1.2
+      mix2: 1.0.5
+    dev: false
+
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -3897,6 +3929,12 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.4.5
       vue: 3.2.45
+    dev: false
+
+  /vue-simple-password-meter/1.1.2:
+    resolution: {integrity: sha512-Lyp3UQdgkGbiU2UIOTjbUq/IhwwFucfENe6MMo3fRBui5S8cTtYiDVs5E3TGQggMh3MfLiiIeRllXhLMW/1Lcg==}
+    dependencies:
+      clean: 4.0.2
     dev: false
 
   /vue-template-compiler/2.7.14:
