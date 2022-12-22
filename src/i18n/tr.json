@@ -1,0 +1,10 @@
+{
+  "app-name": "Şifre Oluşturucu",
+  "slogan": "Hızlı, pratik ve daha güvenli şifreler için.",
+  "lowercase": "Küçük harfler",
+  "uppercase": "Büyük harfler",
+  "numbers": "Sayılar",
+  "symbols": "Semboller",
+  "button-generate": "Oluştur ve Kopyala",
+  "copy-message": "Şifre kopyalandı"
+}

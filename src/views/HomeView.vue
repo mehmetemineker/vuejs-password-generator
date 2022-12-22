@@ -2,6 +2,9 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { ClipboardDocumentIcon } from '@heroicons/vue/24/outline'
 import passwordMeter from "vue-simple-password-meter"
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const isCheckedUppercase = ref(true)
 const isCheckedLowercase = ref(true)
@@ -9,6 +12,7 @@ const isCheckedNumbers = ref(true)
 const isCheckedSymbols = ref(true)
 const passwordLength = ref(8)
 const password = ref("")
+const isVisibleToast = ref(false)
 
 const uppercases = "abcdefghijklmnopqrstuvwxyz"
 const lowercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -49,11 +53,20 @@ const generate = () => {
 
 const copy = () => {
   navigator.clipboard.writeText(password.value)
+  showToast()
 }
 
 const generateAndCopy = () => {
   generate()
   copy()
+}
+
+const showToast = () => {
+  isVisibleToast.value = true
+
+  setTimeout(() => {
+    isVisibleToast.value = false
+  }, 3000);
 }
 
 watch([passwordLength, characters], () => {
@@ -69,8 +82,8 @@ onMounted(() => {
 <template>
   <main class="pt-8 md:pt-16 flex justify-center">
     <div class="bg-resdd-300 mx-6 text-center text-gray-700">
-      <h1 class="text-4xl md:text-6xl font-bold mb-3">Password Generator</h1>
-      <p class="text-sm md:text-xl text-gray-400">For fast, practical and more secure passwords.</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-3">{{ t("app-name") }}</h1>
+      <p class="text-sm md:text-xl text-gray-400">{{ t("slogan") }}</p>
 
       <div class="relative mt-10 md:mt-20">
         <input type="text" readonly
@@ -101,58 +114,54 @@ onMounted(() => {
             <div class="flex items-center mr-4">
               <input id="checkbox-lowercase" type="checkbox" v-model="isCheckedUppercase"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
-              <label for="checkbox-lowercase" class="ml-2 text-sm font-medium  dark:text-gray-300">Lowercase</label>
+              <label for="checkbox-lowercase" class="ml-2 text-sm font-medium  dark:text-gray-300">{{ t("lowercase") }}</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
               <input id="checkbox-uppercase" type="checkbox" v-model="isCheckedLowercase"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
-              <label for="checkbox-uppercase" class="ml-2 text-sm font-medium dark:text-gray-300">Uppercase</label>
+              <label for="checkbox-uppercase" class="ml-2 text-sm font-medium dark:text-gray-300">{{ t("uppercase") }}</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
               <input id="checkbox-numbers" type="checkbox" v-model="isCheckedNumbers"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
-              <label for="checkbox-numbers" class="ml-2 text-sm font-medium dark:text-gray-300">Numbers</label>
+              <label for="checkbox-numbers" class="ml-2 text-sm font-medium dark:text-gray-300">{{ t("numbers") }}</label>
             </div>
           </div>
           <div>
             <div class="flex items-center mr-4">
               <input id="checkbox-symbols" type="checkbox" v-model="isCheckedSymbols"
                 class="w-6 h-6 text-primary-600 focus:ring-primary-600">
-              <label for="checkbox-symbols" class="ml-2 text-sm font-medium dark:text-gray-300">Symbols</label>
+              <label for="checkbox-symbols" class="ml-2 text-sm font-medium dark:text-gray-300">{{ t("symbols") }}</label>
             </div>
           </div>
         </div>
       </div>
 
       <button @click="generateAndCopy"
-        class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-3.5 mr-2 mb-2">Generate
-        and Copy</button>
+        class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-8 py-3.5 mr-2 mb-2">{{ t("button-generate") }}</button>
     </div>
-
   </main>
 
-  <footer
-    class="fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/"
-        class="hover:underline">Password Generator</a>. All Rights Reserved.
-    </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-      </li>
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-      </li>
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
-      </li>
-      <li>
-        <a href="#" class="hover:underline">Contact</a>
-      </li>
-    </ul>
-  </footer>
+  <Transition>
+    <div class="fixed inset-0 flex items-start justify-end px-4 py-6 pointer-events-none " v-if="isVisibleToast">
+      <div
+        class="flex items-center p-4 w-full max-w-sm text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+        role="alert">
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="ml-3 text-sm font-normal">{{ t("copy-message") }}</div>
+      </div>
+    </div>
+  </Transition>
 </template>

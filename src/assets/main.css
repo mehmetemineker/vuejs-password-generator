@@ -2,15 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    @apply bg-white
+body {
+  @apply bg-white;
 }
 
-input[type=range]::-webkit-slider-thumb{
-    @apply bg-primary-600
+input[type="range"]::-webkit-slider-thumb {
+  @apply bg-primary-600;
 }
 
 .po-password-strength-bar {
   height: 6px !important;
   margin-top: 0 !important;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
