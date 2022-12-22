@@ -1,0 +1,10 @@
+{
+  "app-name": "Générateur de mot de passe",
+  "slogan": "Pour des mots de passe rapides, pratiques et plus sécurisés",
+  "lowercase": "Lettres minuscules",
+  "uppercase": "Lettres majuscules",
+  "numbers": "Nombres",
+  "symbols": "Symboles",
+  "button-generate": "Générer",
+  "copy-message": "Mot de passe copié"
+}

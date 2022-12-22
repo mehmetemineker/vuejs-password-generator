@@ -1,0 +1,10 @@
+{
+  "app-name": "Generator haseł",
+  "slogan": "Dla szybkich, wygodnych i bezpieczniejszych haseł",
+  "lowercase": "Małe litery",
+  "uppercase": "Duże litery",
+  "numbers": "Liczby",
+  "symbols": "Symbole",
+  "button-generate": "Wygeneruj",
+  "copy-message": "Hasło skopiowano"
+}

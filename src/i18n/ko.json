@@ -1,0 +1,10 @@
+{
+  "app-name": "비밀번호 생성기",
+  "slogan": "빠르고 편리한, 더 안전한 비밀번호를 위해",
+  "lowercase": "소문자",
+  "uppercase": "대문자",
+  "numbers": "숫자",
+  "symbols": "기호",
+  "button-generate": "생성",
+  "copy-message": "비밀번호가 복사되었습니다"
+}

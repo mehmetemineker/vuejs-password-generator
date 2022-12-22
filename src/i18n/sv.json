@@ -1,0 +1,10 @@
+{
+  "app-name": "Lösenordsgenerator",
+  "slogan": "För snabba, praktiska och säkrare lösenord",
+  "lowercase": "Gemener",
+  "uppercase": "Versaler",
+  "numbers": "Siffror",
+  "symbols": "Symboler",
+  "button-generate": "Skapa",
+  "copy-message": "Lösenordet kopierat"
+}

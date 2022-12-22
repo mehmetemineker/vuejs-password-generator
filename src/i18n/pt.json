@@ -1,0 +1,11 @@
+{
+  "app-name": "Gerador de senha",
+  "slogan": "Para senhas rápidas, práticas e mais seguras",
+  "lowercase": "Letras minúsculas",
+  "uppercase": "Letras maiúsculas",
+  "numbers": "Números",
+  "symbols": "Símbolos",
+  "button-generate": "Gerar",
+  "copy-message": "Senha copiada"
+}
+

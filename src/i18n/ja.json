@@ -1,0 +1,10 @@
+{
+  "app-name": "パスワード生成",
+  "slogan": "高速で使いやすく、より安全なパスワードのために",
+  "lowercase": "小文字",
+  "uppercase": "大文字",
+  "numbers": "数字",
+  "symbols": "記号",
+  "button-generate": "生成する",
+  "copy-message": "パスワードをコピーしました"
+}

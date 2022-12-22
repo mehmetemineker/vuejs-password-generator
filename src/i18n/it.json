@@ -1,0 +1,10 @@
+{
+  "app-name": "Generatore di password",
+  "slogan": "Per password veloci, pratiche e più sicure",
+  "lowercase": "Lettere minuscole",
+  "uppercase": "Lettere maiuscole",
+  "numbers": "Numeri",
+  "symbols": "Simboli",
+  "button-generate": "Crea",
+  "copy-message": "Password copiata"
+}
