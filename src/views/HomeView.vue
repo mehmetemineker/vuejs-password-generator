@@ -61,11 +61,6 @@ const copy = () => {
   }
 }
 
-const generateAndCopy = () => {
-  generate()
-  copy()
-}
-
 const showToast = () => {
   isVisibleToast.value = true
 
@@ -80,8 +75,8 @@ watch([passwordLength, characters], () => {
 
 onMounted(() => {
   generate()
-})
 
+})
 </script>
 
 <template>
@@ -92,15 +87,15 @@ onMounted(() => {
 
       <div class="relative mt-10 md:mt-20">
         <input type="text" readonly
-          class="block w-full p-6 pr-20 text-3xl md:text-4xl rounded-t-md bg-gray-100 outline-0 border-none focus:ring-0 focus:border-none font-medium dark:text-gray-700"
-          v-model="password" />
+          class="block w-full p-6 pr-20 text-3xl md:text-4xl rounded-t-md bg-gray-100 outline-0 border-none focus:ring-0 focus:border-none font-medium dark:bg-gray-700"
+          v-model="password" ref="input" @focus="($refs.input as any).select()" />
 
         <button type="submit" class="absolute right-2.5 bottom-2.5 p-3 rounded-full" @click="copy">
-          <ClipboardDocumentIcon class="h-10 dark:text-gray-700" />
+          <ClipboardDocumentIcon class="h-10" />
         </button>
       </div>
 
-      <div class="bg-gray-200 dark:bg-gray-300 rounded-b h-1.5 mb-10">
+      <div class="bg-gray-200 dark:bg-gray-600 rounded-b h-1.5 mb-10">
         <password-meter :password="password" />
       </div>
 
@@ -150,7 +145,7 @@ onMounted(() => {
       </div>
 
       <div>
-        <button @click="generateAndCopy"
+        <button @click="generate"
           class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-8 py-3.5 mr-2 mb-2">{{
               t("button-generate")
           }}</button>
