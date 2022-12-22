@@ -55,8 +55,10 @@ const generate = () => {
 }
 
 const copy = () => {
-  navigator.clipboard.writeText(password.value)
-  showToast()
+  if (password.value) {
+    navigator.clipboard.writeText(password.value)
+    showToast()
+  }
 }
 
 const generateAndCopy = () => {
