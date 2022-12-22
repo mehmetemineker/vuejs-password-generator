@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white;
+  @apply bg-white dark:bg-slate-900;
 }
 
 input[type="range"]::-webkit-slider-thumb {
