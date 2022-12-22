@@ -157,6 +157,8 @@ onMounted(() => {
           <MoonIcon class="h-6" v-else="isDark" />
         </button>
       </div>
+      
+      <p class="text-xs text-gray-400 dark:text-slate-600">Version 1.0</p>
     </div>
   </main>
 

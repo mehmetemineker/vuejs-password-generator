@@ -16,6 +16,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.13",
     "@vueuse/core": "^9.8.2",
+    "@vueuse/head": "^1.0.22",
     "flowbite": "^1.5.5",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
